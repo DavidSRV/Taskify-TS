@@ -7,17 +7,19 @@ interface Props {
   handleAdd: (e: React.FormEvent) => void;
 }
 
-
 export default function InputField({ todo, setTodo, handleAdd }: Props) {
-
-  const inputRef = useRef(null)
-
-  
+  const inputRef = useRef<HTMLInputElement>(null);
 
   return (
-    <form className="input" onSubmit={(e) => handleAdd(e)}>
+    <form
+      className="input"
+      onSubmit={(e) => {
+        handleAdd(e);
+        inputRef.current?.blur();
+      }}
+    >
       <input
-      ref={inputRef}
+        ref={inputRef}
         type="input"
         placeholder="Enter a task"
         className="input__box"
