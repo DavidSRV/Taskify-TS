@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./style.css";
 
 interface Props {
   todo: string;
   setTodo: React.Dispatch<React.SetStateAction<string>>;
+  handleAdd: (e: React.FormEvent) => void;
 }
 
-export default function InputField({ todo, setTodo }: Props) {
+
+export default function InputField({ todo, setTodo, handleAdd }: Props) {
+
+  const inputRef = useRef(null)
+
+  
+
   return (
-    <form className="input">
+    <form className="input" onSubmit={(e) => handleAdd(e)}>
       <input
+      ref={inputRef}
         type="input"
         placeholder="Enter a task"
         className="input__box"
