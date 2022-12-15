@@ -44,11 +44,11 @@ const SingleTodo: React.FC<Props> = ({ todo, todos, setTodos }) => {
 
         <input value={editTodo} onChange={(e)=>
           setEditTodo(e.target.value)
-        }  className="todo__single--test"/>
+        }  className="todo__single--text"/>
       ) : todo.isDone ? (
-        <s className="todos__single--Text">{todo.todo}</s>
+        <s className="todos__single--text">{todo.todo}</s>
       ) : (
-        <span className="todos__single--Text">{todo.todo}</span>
+        <span className="todos__single--text">{todo.todo}</span>
       )}
 
       <div>
