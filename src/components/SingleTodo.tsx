@@ -18,7 +18,7 @@ const SingleTodo: React.FC<Props> = ({ todo, todos, setTodos }) => {
 
       <div>
         <span className="icon">
-          <AiFillEdit />
+          <AiFillEdit name="TS"/>
         </span>
         <span className="icon">
             <AiFillDelete />
