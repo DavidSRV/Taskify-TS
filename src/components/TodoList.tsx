@@ -10,6 +10,10 @@ interface Props {
 
 const TodoList: React.FC<Props> = ({ todos, setTodos }) => {
   return (
+
+    <div className="container">
+
+
     <div className="todos">
       {todos.map((todo) => (
         <SingleTodo
@@ -19,6 +23,7 @@ const TodoList: React.FC<Props> = ({ todos, setTodos }) => {
           setTodos={setTodos}
         />
       ))}
+    </div>
     </div>
   );
 };
