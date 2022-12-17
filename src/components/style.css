@@ -20,7 +20,7 @@
   outline: none;
 }
 
-.input_submit {
+.input__submit {
   position: absolute;
   width: 50px;
   height: 50px;
@@ -35,11 +35,11 @@
   box-shadow: 0 0 10px black;
 }
 
-.input_submit:hover {
+.input__submit:hover {
   background-color: #388ae2;
 }
 
-.input_submit:active {
+.input__submit:active {
   transform: scale(0.8);
   box-shadow: 0 0 5px black;
 }
@@ -75,6 +75,7 @@
 
 .todos__heading {
   font-size: 30px;
+  /* text-align: center; */
   color: white;
 }
 
@@ -132,5 +133,4 @@
     width: 95%;
     margin-bottom: 10px;
   }
-
 }
