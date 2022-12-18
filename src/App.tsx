@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import InputField from "./components/InputField";
 import TodoList from "./components/TodoList";
-import { Todo } from "./models";
+import { Todo } from "./components/models/models";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 
 const App: React.FC = () => {
@@ -38,7 +38,6 @@ const App: React.FC = () => {
     let add;
     let active = todos;
     let complete = CompletedTodos;
-    // Source Logic
     if (source.droppableId === "TodosList") {
       add = active[source.index];
       active.splice(source.index, 1);
@@ -47,7 +46,6 @@ const App: React.FC = () => {
       complete.splice(source.index, 1);
     }
 
-    // Destination Logic
     if (destination.droppableId === "TodosList") {
       active.splice(destination.index, 0, add);
     } else {
