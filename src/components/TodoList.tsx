@@ -4,35 +4,35 @@ import { Todo } from "../models";
 import SingleTodo from "./SingleTodo";
 import "./style.css";
 
-interface Props {
-  todos: Todo[];
-  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
-  completedTodos: Todo[];
-  setCompletedTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+interface props {
+  todos: Array<Todo>;
+  setTodos: React.Dispatch<React.SetStateAction<Array<Todo>>>;
+  setCompletedTodos: React.Dispatch<React.SetStateAction<Array<Todo>>>;
+  CompletedTodos: Array<Todo>;
 }
 
-const TodoList: React.FC<Props> = ({
+const TodoList: React.FC<props> = ({
   todos,
   setTodos,
-  completedTodos,
+  CompletedTodos,
   setCompletedTodos,
 }) => {
   return (
     <div className="container">
       <Droppable droppableId="TodosList">
-        {(provided) => (
+        {(provided, snapshot) => (
           <div
-            className="todos"
+            className={`todos ${snapshot.isDraggingOver ? "dragactive" : ""}`}
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
             <span className="todos__heading">Active Tasks</span>
-            {todos.map((todo, index) => (
+            {todos?.map((todo, index) => (
               <SingleTodo
                 index={index}
+                todos={todos}
                 todo={todo}
                 key={todo.id}
-                todos={todos}
                 setTodos={setTodos}
               />
             ))}
@@ -40,21 +40,22 @@ const TodoList: React.FC<Props> = ({
           </div>
         )}
       </Droppable>
-
       <Droppable droppableId="TodosRemove">
-        {(provided) => (
+        {(provided, snapshot) => (
           <div
-            className="todos remove"
             ref={provided.innerRef}
             {...provided.droppableProps}
+            className={`todos  ${
+              snapshot.isDraggingOver ? "dragcomplete" : "remove"
+            }`}
           >
             <span className="todos__heading">Completed Tasks</span>
-            {completedTodos.map((todo, index) => (
+            {CompletedTodos?.map((todo, index) => (
               <SingleTodo
                 index={index}
+                todos={CompletedTodos}
                 todo={todo}
                 key={todo.id}
-                todos={completedTodos}
                 setTodos={setCompletedTodos}
               />
             ))}
